@@ -1,0 +1,76 @@
+<div class="button-container">
+    <button
+        mat-raised-button
+        color="primary"
+        (click)="start()"
+        class="btn btn-primary"
+        [disabled]="isPlaying"
+    >
+        Play
+    </button>
+
+    <button
+        mat-raised-button
+        color="primary"
+        (click)="pause()"
+        class="btn btn-warning"
+        [disabled]="!isPlaying"
+    >
+        Pause
+    </button>
+    <button
+        mat-raised-button
+        color="primary"
+        (click)="stop()"
+        class="btn btn-info"
+        [disabled]="!isPlaying"
+    >
+        Stop
+    </button>
+    <button
+        mat-raised-button
+        color="primary"
+        (click)="resume()"
+        class="btn btn-info"
+        [disabled]="isPlaying"
+    >
+        Resume
+    </button>
+</div>
+
+<div class="demo-container">
+    <div class="video-container">
+        <video
+            width="{{ videoWidth }}"
+            height="{{ videoHeight }}"
+            #videoElement
+            autoplay
+        ></video>
+        <canvas #canvas width="{{ videoWidth }}" height="{{ videoHeight }}">
+        </canvas>
+    </div>
+    <div class="info-container">
+        <div *ngIf="loading" class="loader">
+            Loading posenet model!
+        </div>
+        <!-- <table #table *ngIf="info?.length" cdk-table [dataSource]="info">
+            <ng-container cdkColumnDef="part">
+                <th cdk-header-cell *cdkHeaderCellDef>Body Part</th>
+                <td cdk-cell *cdkCellDef="let element">{{ element?.part }}</td>
+            </ng-container>
+
+            <ng-container cdkColumnDef="score">
+                <th cdk-header-cell *cdkHeaderCellDef>Score</th>
+                <td cdk-cell *cdkCellDef="let element">{{ element?.score }}</td>
+            </ng-container>
+            <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+            <tr cdk-row *cdkRowDef="let row; columns: displayedColumns"></tr>
+        </table> -->
+        <div *ngIf="info?.length">
+            <ul *ngFor="let el of info">
+                <li>{{ el?.part }} ({{ el?.score | number }})</li>
+            </ul>
+        </div>
+        <div *ngIf="info?.length === 0">No pose detected!</div>
+    </div>
+</div>

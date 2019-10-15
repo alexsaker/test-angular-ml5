@@ -1,0 +1,67 @@
+<div class="button-container">
+    <button
+        mat-raised-button
+        color="primary"
+        (click)="start()"
+        class="btn btn-primary"
+        [disabled]="isPlaying"
+    >
+        Play
+    </button>
+
+    <button
+        mat-raised-button
+        color="primary"
+        (click)="pause()"
+        class="btn btn-warning"
+        [disabled]="!isPlaying"
+    >
+        Pause
+    </button>
+    <button
+        mat-raised-button
+        color="primary"
+        (click)="stop()"
+        class="btn btn-info"
+        [disabled]="!isPlaying"
+    >
+        Stop
+    </button>
+    <button
+        mat-raised-button
+        color="primary"
+        (click)="resume()"
+        class="btn btn-info"
+        [disabled]="isPlaying"
+    >
+        Resume
+    </button>
+</div>
+
+<div class="demo-container">
+    <div class="video-container">
+        <video
+            width="{{ videoWidth }}"
+            height="{{ videoHeight }}"
+            #videoElement
+            autoplay
+        ></video>
+        <canvas
+            #canvasElement
+            width="{{ videoWidth }}"
+            height="{{ videoHeight }}"
+        >
+        </canvas>
+    </div>
+    <div class="info-container">
+        <div *ngIf="loading" class="loader">
+            Loading darknet YOLO model!
+        </div>
+        <div *ngIf="info?.length">
+            <ul *ngFor="let el of info">
+                <li>{{ el?.className }} ({{ el?.classProb | number }})</li>
+            </ul>
+        </div>
+        <div *ngIf="info?.length === 0">No known object detected!</div>
+    </div>
+</div>

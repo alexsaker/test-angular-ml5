@@ -1,0 +1,46 @@
+:host {
+    .button-container {
+        display: flex;
+        flex-flow: row wrap;
+        width: 100vw;
+        & > button {
+            margin-right: 15px;
+        }
+    }
+    .demo-container {
+        display: flex;
+        flex-flow: row wrap;
+        .video-container {
+            display: flex;
+            flex-flow: row nowrap;
+            flex: 1;
+            & > canvas {
+                margin-left: -600px;
+            }
+        }
+        .info-container {
+            display: flex;
+            flex-flow: column wrap;
+            padding: 70px 25px;
+
+            flex: 1;
+            .cdk-header-cell {
+                text-align: left;
+            }
+        }
+        .loader {
+            animation: blink-animation 1s steps(5, start) infinite;
+            -webkit-animation: blink-animation 1s steps(5, start) infinite;
+        }
+        @keyframes blink-animation {
+            to {
+                visibility: hidden;
+            }
+        }
+        @-webkit-keyframes blink-animation {
+            to {
+                visibility: hidden;
+            }
+        }
+    }
+}
