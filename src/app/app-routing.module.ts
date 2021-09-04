@@ -7,7 +7,7 @@ import { YoloModule } from './yolo/yolo.module';
 const routes: Routes = [
     { path: 'posenet', loadChildren: './posenet/posenet.module#PosenetModule' },
     { path: 'yolo', loadChildren: './yolo/yolo.module#YoloModule' },
-    { path: '', redirectTo: '/posenet', pathMatch: 'full' },
+    { path: '', redirectTo: '/yolo', pathMatch: 'full' },
     // { path: '**', component: PageNotFoundComponent }];
 ];
 @NgModule({
@@ -19,4 +19,4 @@ const routes: Routes = [
     ],
     exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

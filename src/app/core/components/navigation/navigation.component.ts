@@ -12,7 +12,7 @@ export class NavigationComponent implements OnInit {
     public isHandset$: Observable<boolean>;
     public title: string;
 
-    constructor(private breakpointObserver: BreakpointObserver) {}
+    constructor(private breakpointObserver: BreakpointObserver) { }
     ngOnInit() {
         this.title = 'Angular ML5';
         this.isHandset$ = this.breakpointObserver
